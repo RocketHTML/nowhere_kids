@@ -1,0 +1,109 @@
+1. Character abstract class 
+	- Each character can be set. 
+		- name 
+		- class (enum)
+		- Special special
+		- lvl 
+		- exp
+
+		- weapon 		// have levels, power, ranges, stamina cost, and accuracy
+		- Item[] items // 5 slots 
+		
+		- boolean tapped
+		- location 	// 1st to be set if not tapped 
+		- action   	// 2nd to be set if not tapped
+		- target    // last to be set if not tapped 
+		
+		
+
+		- Character (String name, Type t, 
+					int att, int aim, int spd, int stamina, int def, int res, 
+					int move)
+		- Character (String properties)
+
+		- Item takeItem(String itemName)
+		- void giveItem(Item item)
+		- boolean equip(String itemName)
+			// If level allows. If Class allows
+		- boolean unequip()
+			// If weapon can be unequiped 
+
+		- boolean use(String itemName)
+			// If level allows. If item is usable.
+
+		- boolean move(location)
+		- boolean act()
+			- performs current action on current target
+			- returns special(Character)
+
+		- String summary() // returns name, class, tapped, stats.
+
+		- void setClass(Class)
+		- void setLvl(int)
+		- void incrementLvl()
+		- void addExp() //uses an increment loop, to increment Lvl accordingly
+		- 
+
+1b. Item class
+		- String name
+		- int level
+		- Class class 
+		- Character user
+		- boolean takable = false;
+
+		- boolean useOn(Character)
+		- boolean setUser(Character)
+		- boolean equip()
+		- boolean unequip() // some curseditem may be un-unequipable
+		- void setTakable(boolean)
+
+
+
+2. At some point I'll hop over to the interface <Player class, extendable by the different nations>
+	- see enemies [prints enemy names, locations, class and stats]
+	- print map [prints map and unit names ]
+	- select unit 
+		<lists units. selectable by typing in that units index in the list> 
+		- <Shows units name>
+
+
+	- The submit function calls the doMove for each character.
+
+								- doAction(this.move)
+								- doAction(Character)
+								- doAction() is doAction(Move.NONE, new Character())
+								- doAction unsets the character's move
+								- doAction taps the character 
+									- isTapped(), unTap(), tap(),
+		- attack
+			- needs a target character 
+		- special
+			- needs a target character  
+
+special attacks:
+	tap a character 
+	untap a character 
+
+User can choose action
+2. Then they attack me, and the battle ends. (although fastest goes first)
+
+3. Accuracy modifier, Dodge modifier, each class has both 
+
+4. Make a reactive AI demo 
+
+5. Some class has the double attack skill
+	- all characters should have some amount of stamina 
+	- stamina recovered at the end of turn based on class and passive skills 
+		- or some active skill 
+		- max stamina
+		- HP works similarly 
+
+6. Light and Heavy attacks (Modifies speed and attack power)
+	- Modifiers are different depending on the class 
+
+7. Some kind of grid system.
+	- allows a character to be in a place
+	- allows for movement to an adjacent place 
+	- allows for attacking of adjacent squares 
+		- characters should have a range of attack (a rule)
+	- Squares can store modifiers 
